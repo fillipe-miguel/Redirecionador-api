@@ -23,14 +23,18 @@ let redirect = async (req, res) => {
 
 let addLink = async (req, res) => {
 	let link = new Link(req.body);
+
 	console.log(link);
 	console.log(req.body);
 
 	try {
 		let document = await link.save();
 		res.send(document);
+		console.log('estou aqui!');
 	} catch (error) {
-		res.send(error);
+		console.log('estou aqui erro!');
+		console.log(error);
+		res.render('index', { error });
 	}
 };
 

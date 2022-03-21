@@ -1,5 +1,5 @@
 let renderHomePage = (req, res) => {
-	res.render('index');
+	res.render('index', { error: false });
 };
 
 module.exports = { renderHomePage };
