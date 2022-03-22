@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
 const linksRouter = require('./routes/linksRoutes');
-const router = require('./routes/routes');
 
 // ======== USADO PARA COLOCAR A FORÇA ALGUNS DADOS ========
 // let linkA = new Link({
@@ -42,9 +41,8 @@ mongoose
 		console.log(error);
 	});
 
-app.use('/', router);
-
-app.use('/link', linksRouter);
+// ANTIGA /LINK
+app.use('/', linksRouter);
 
 app.listen(PORT, () => {
 	console.log(`ABERTO ouvindo a porta ${PORT}`);
