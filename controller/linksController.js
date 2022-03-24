@@ -11,7 +11,7 @@ let linksController = {
 	},
 
 	renderAdd: async (req, res) => {
-		res.render('addLinks');
+		res.render('addLinks', { error: false });
 	},
 
 	redirect: async (req, res) => {
@@ -34,9 +34,9 @@ let linksController = {
 
 		try {
 			let doc = await Link.findById(id);
-			res.render('editLink', { doc });
+			res.render('editLink', { error: false, doc });
 		} catch (error) {
-			res.render('error', { error });
+			res.render('editLink', { error, doc: false });
 		}
 	},
 
@@ -48,7 +48,7 @@ let linksController = {
 			console.log(document);
 			res.redirect('/');
 		} catch (error) {
-			res.render('error', { error });
+			res.render('addLinks', { error });
 		}
 	},
 
@@ -63,7 +63,7 @@ let linksController = {
 			await Link.findByIdAndUpdate(req.body.id, link);
 			res.redirect('/');
 		} catch (error) {
-			res.render('error', { error });
+			res.render('editLink', { error, doc: req.body });
 		}
 	},
 
