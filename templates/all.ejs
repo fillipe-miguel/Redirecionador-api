@@ -23,9 +23,10 @@
 			<div class="card-body">
 				<h2 class="card-title"><%=link.name%></h2>
 				<p class="card-subtitle"><%=link.description%></p>
+				<p class="text-secondary">Número de cliks: <%=link.cliks%></p>
 
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<a href="<%=link.link%>" class="btn btn-primary"
+					<a href="/<%=link.name%>" class="btn btn-primary"
 						>Ir para o site</a
 					>
 					<button

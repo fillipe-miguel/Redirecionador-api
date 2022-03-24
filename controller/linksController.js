@@ -19,7 +19,10 @@ let linksController = {
 
 		try {
 			// Deixo name aqui porque bate com o banco de dados !!
-			let document = await Link.findOne({ name });
+			let document = await Link.findOneAndUpdate(
+				{ name },
+				{ $inc: { cliks: 1 } }
+			);
 			res.redirect(document.link);
 		} catch (error) {
 			res.render('error', { error });
